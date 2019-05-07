@@ -1,0 +1,67 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "locationId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Factory's git repo information.",
+            "properties": {
+                "factoryResourceId": {
+                    "description": "The factory resource id.",
+                    "type": "string"
+                },
+                "repoConfiguration": {
+                    "description": "Git repo information of the factory.",
+                    "discriminator": {
+                        "propertyName": "type"
+                    },
+                    "properties": {
+                        "accountName": {
+                            "description": "Account name.",
+                            "type": "string"
+                        },
+                        "collaborationBranch": {
+                            "description": "Collaboration branch.",
+                            "type": "string"
+                        },
+                        "lastCommitId": {
+                            "description": "Last commit id.",
+                            "type": "string"
+                        },
+                        "repositoryName": {
+                            "description": "Repository name.",
+                            "type": "string"
+                        },
+                        "rootFolder": {
+                            "description": "Root folder.",
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Type of repo configuration.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "accountName",
+                        "repositoryName",
+                        "collaborationBranch",
+                        "rootFolder"
+                    ],
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

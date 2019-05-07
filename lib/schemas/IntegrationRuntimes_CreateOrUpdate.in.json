@@ -1,0 +1,107 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "factoryName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 63,
+            "pattern": "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$"
+        },
+        "integrationRuntimeName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 63,
+            "pattern": "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Azure Data Factory nested resource, which belongs to a factory.",
+                    "properties": {
+                        "etag": {
+                            "description": "Etag identifies change in the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "id": {
+                            "description": "The resource identifier.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The resource name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The resource type.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Integration runtime resource type.",
+            "properties": {
+                "properties": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "description": "Azure Data Factory nested object which serves as a compute resource for activities.",
+                    "discriminator": {
+                        "propertyName": "type"
+                    },
+                    "properties": {
+                        "description": {
+                            "description": "Integration runtime description.",
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The type of integration runtime.",
+                            "enum": [
+                                "Managed",
+                                "SelfHosted"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "IntegrationRuntimeType"
+                            }
+                        }
+                    },
+                    "required": [
+                        "type"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        },
+        "If_Match": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,178 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "factoryName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 63,
+            "pattern": "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$"
+        },
+        "requestBody": {
+            "additionalProperties": {
+                "type": "object"
+            },
+            "allOf": [
+                {
+                    "description": "Azure Data Factory top-level resource.",
+                    "properties": {
+                        "eTag": {
+                            "description": "Etag identifies change in the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "id": {
+                            "description": "The resource identifier.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "The resource location.",
+                            "type": "string",
+                            "x-ms-mutability": [
+                                "create",
+                                "read"
+                            ]
+                        },
+                        "name": {
+                            "description": "The resource name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The resource tags.",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "The resource type.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Factory resource type.",
+            "properties": {
+                "identity": {
+                    "description": "Managed service identity of the factory.",
+                    "properties": {
+                        "principalId": {
+                            "description": "The principal id of the identity.",
+                            "format": "uuid",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "tenantId": {
+                            "description": "The client tenant id of the identity.",
+                            "format": "uuid",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The identity type. Currently the only supported type is 'SystemAssigned'.",
+                            "enum": [
+                                "SystemAssigned"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": false,
+                                "name": "FactoryIdentityType"
+                            }
+                        }
+                    },
+                    "required": [
+                        "type"
+                    ],
+                    "type": "object"
+                },
+                "properties": {
+                    "description": "Properties of the factory.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "createTime": {
+                            "description": "Time the factory was created in ISO8601 format.",
+                            "format": "date-time",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "provisioningState": {
+                            "description": "Factory provisioning state, example Succeeded.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "repoConfiguration": {
+                            "description": "Git repo information of the factory.",
+                            "discriminator": {
+                                "propertyName": "type"
+                            },
+                            "properties": {
+                                "accountName": {
+                                    "description": "Account name.",
+                                    "type": "string"
+                                },
+                                "collaborationBranch": {
+                                    "description": "Collaboration branch.",
+                                    "type": "string"
+                                },
+                                "lastCommitId": {
+                                    "description": "Last commit id.",
+                                    "type": "string"
+                                },
+                                "repositoryName": {
+                                    "description": "Repository name.",
+                                    "type": "string"
+                                },
+                                "rootFolder": {
+                                    "description": "Root folder.",
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "description": "Type of repo configuration.",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "type",
+                                "accountName",
+                                "repositoryName",
+                                "collaborationBranch",
+                                "rootFolder"
+                            ],
+                            "type": "object"
+                        },
+                        "version": {
+                            "description": "Version of the factory.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        },
+        "If_Match": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

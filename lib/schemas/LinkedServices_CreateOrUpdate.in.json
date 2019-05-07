@@ -1,0 +1,168 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "factoryName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 63,
+            "pattern": "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$"
+        },
+        "linkedServiceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 260,
+            "pattern": "^[A-Za-z0-9_][^<>*#.%&:\\\\+?/]*$"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Azure Data Factory nested resource, which belongs to a factory.",
+                    "properties": {
+                        "etag": {
+                            "description": "Etag identifies change in the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "id": {
+                            "description": "The resource identifier.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The resource name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The resource type.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Linked service resource type.",
+            "properties": {
+                "properties": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "description": "The Azure Data Factory nested object which contains the information and credential which can be used to connect with related store or compute resource.",
+                    "discriminator": {
+                        "propertyName": "type"
+                    },
+                    "properties": {
+                        "annotations": {
+                            "description": "List of tags that can be used for describing the linked service.",
+                            "items": {
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "connectVia": {
+                            "description": "Integration runtime reference type.",
+                            "properties": {
+                                "parameters": {
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    },
+                                    "description": "An object mapping parameter names to argument values.",
+                                    "type": "object"
+                                },
+                                "referenceName": {
+                                    "description": "Reference integration runtime name.",
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "description": "Type of integration runtime.",
+                                    "enum": [
+                                        "IntegrationRuntimeReference"
+                                    ],
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "type",
+                                "referenceName"
+                            ],
+                            "type": "object"
+                        },
+                        "description": {
+                            "description": "Linked service description.",
+                            "type": "string"
+                        },
+                        "parameters": {
+                            "additionalProperties": {
+                                "description": "Definition of a single parameter for an entity.",
+                                "properties": {
+                                    "defaultValue": {
+                                        "description": "Default value of parameter.",
+                                        "type": "object"
+                                    },
+                                    "type": {
+                                        "description": "Parameter type.",
+                                        "enum": [
+                                            "Object",
+                                            "String",
+                                            "Int",
+                                            "Float",
+                                            "Bool",
+                                            "Array",
+                                            "SecureString"
+                                        ],
+                                        "type": "string",
+                                        "x-ms-enum": {
+                                            "modelAsString": true,
+                                            "name": "ParameterType"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "type"
+                                ],
+                                "type": "object"
+                            },
+                            "description": "Definition of all parameters for an entity.",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "Type of linked service.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "type"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        },
+        "If_Match": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,158 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "factoryName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 63,
+            "pattern": "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$"
+        },
+        "runId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Query parameters for listing runs.",
+            "properties": {
+                "continuationToken": {
+                    "description": "The continuation token for getting the next page of results. Null for first page.",
+                    "type": "string"
+                },
+                "filters": {
+                    "description": "List of filters.",
+                    "items": {
+                        "description": "Query filter option for listing runs.",
+                        "properties": {
+                            "operand": {
+                                "description": "Parameter name to be used for filter. The allowed operands to query pipeline runs are PipelineName, RunStart, RunEnd and Status; to query activity runs are ActivityName, ActivityRunStart, ActivityRunEnd, ActivityType and Status, and to query trigger runs are TriggerName, TriggerRunTimestamp and Status.",
+                                "enum": [
+                                    "PipelineName",
+                                    "Status",
+                                    "RunStart",
+                                    "RunEnd",
+                                    "ActivityName",
+                                    "ActivityRunStart",
+                                    "ActivityRunEnd",
+                                    "ActivityType",
+                                    "TriggerName",
+                                    "TriggerRunTimestamp",
+                                    "RunGroupId",
+                                    "LatestOnly"
+                                ],
+                                "type": "string",
+                                "x-ms-enum": {
+                                    "modelAsString": true,
+                                    "name": "RunQueryFilterOperand"
+                                }
+                            },
+                            "operator": {
+                                "description": "Operator to be used for filter.",
+                                "enum": [
+                                    "Equals",
+                                    "NotEquals",
+                                    "In",
+                                    "NotIn"
+                                ],
+                                "type": "string",
+                                "x-ms-enum": {
+                                    "modelAsString": true,
+                                    "name": "RunQueryFilterOperator"
+                                }
+                            },
+                            "values": {
+                                "description": "List of filter values.",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "operand",
+                            "operator",
+                            "values"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "lastUpdatedAfter": {
+                    "description": "The time at or after which the run event was updated in 'ISO 8601' format.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "lastUpdatedBefore": {
+                    "description": "The time at or before which the run event was updated in 'ISO 8601' format.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "orderBy": {
+                    "description": "List of OrderBy option.",
+                    "items": {
+                        "description": "An object to provide order by options for listing runs.",
+                        "properties": {
+                            "order": {
+                                "description": "Sorting order of the parameter.",
+                                "enum": [
+                                    "ASC",
+                                    "DESC"
+                                ],
+                                "type": "string",
+                                "x-ms-enum": {
+                                    "modelAsString": true,
+                                    "name": "RunQueryOrder"
+                                }
+                            },
+                            "orderBy": {
+                                "description": "Parameter name to be used for order by. The allowed parameters to order by for pipeline runs are PipelineName, RunStart, RunEnd and Status; for activity runs are ActivityName, ActivityRunStart, ActivityRunEnd and Status; for trigger runs are TriggerName, TriggerRunTimestamp and Status.",
+                                "enum": [
+                                    "RunStart",
+                                    "RunEnd",
+                                    "PipelineName",
+                                    "Status",
+                                    "ActivityName",
+                                    "ActivityRunStart",
+                                    "ActivityRunEnd",
+                                    "TriggerName",
+                                    "TriggerRunTimestamp"
+                                ],
+                                "type": "string",
+                                "x-ms-enum": {
+                                    "modelAsString": true,
+                                    "name": "RunQueryOrderByField"
+                                }
+                            }
+                        },
+                        "required": [
+                            "orderBy",
+                            "order"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "lastUpdatedAfter",
+                "lastUpdatedBefore"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

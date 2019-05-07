@@ -1,0 +1,31 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "locationId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The exposure control request.",
+            "properties": {
+                "featureName": {
+                    "description": "The feature name.",
+                    "type": "string"
+                },
+                "featureType": {
+                    "description": "The feature type.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,1103 @@
+{
+    "title": "DataFactoryManagementClient",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/datafactory/2018-06-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow.",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "Lists the available Azure Data Factory API operations.",
+            "description": "Lists the available Azure Data Factory API operations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Factories_List": {
+            "main": "./lib/actions/Factories_List.js",
+            "title": "Lists factories under the specified subscription.",
+            "description": "Lists factories under the specified subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Factories_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Factories_ConfigureFactoryRepo": {
+            "main": "./lib/actions/Factories_ConfigureFactoryRepo.js",
+            "title": "Updates a factory's repo information.",
+            "description": "Updates a factory's repo information.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Factories_ConfigureFactoryRepo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ExposureControl_GetFeatureValue": {
+            "main": "./lib/actions/ExposureControl_GetFeatureValue.js",
+            "title": "Get exposure control feature for specific location.",
+            "description": "Get exposure control feature for specific location.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ExposureControl_GetFeatureValue.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Factories_ListByResourceGroup": {
+            "main": "./lib/actions/Factories_ListByResourceGroup.js",
+            "title": "Lists factories.",
+            "description": "Lists factories.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Factories_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Factories_Delete": {
+            "main": "./lib/actions/Factories_Delete.js",
+            "title": "Deletes a factory.",
+            "description": "Deletes a factory.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Factories_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Factories_Get": {
+            "main": "./lib/actions/Factories_Get.js",
+            "title": "Gets a factory.",
+            "description": "Gets a factory.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Factories_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Factories_Update": {
+            "main": "./lib/actions/Factories_Update.js",
+            "title": "Updates a factory.",
+            "description": "Updates a factory.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Factories_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Factories_CreateOrUpdate": {
+            "main": "./lib/actions/Factories_CreateOrUpdate.js",
+            "title": "Creates or updates a factory.",
+            "description": "Creates or updates a factory.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Factories_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Datasets_ListByFactory": {
+            "main": "./lib/actions/Datasets_ListByFactory.js",
+            "title": "Lists datasets.",
+            "description": "Lists datasets.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Datasets_ListByFactory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Datasets_Delete": {
+            "main": "./lib/actions/Datasets_Delete.js",
+            "title": "Deletes a dataset.",
+            "description": "Deletes a dataset.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Datasets_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Datasets_Get": {
+            "main": "./lib/actions/Datasets_Get.js",
+            "title": "Gets a dataset.",
+            "description": "Gets a dataset.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Datasets_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Datasets_CreateOrUpdate": {
+            "main": "./lib/actions/Datasets_CreateOrUpdate.js",
+            "title": "Creates or updates a dataset.",
+            "description": "Creates or updates a dataset.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Datasets_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Factories_GetDataPlaneAccess": {
+            "main": "./lib/actions/Factories_GetDataPlaneAccess.js",
+            "title": "Get Data Plane access.",
+            "description": "Get Data Plane access.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Factories_GetDataPlaneAccess.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Factories_GetGitHubAccessToken": {
+            "main": "./lib/actions/Factories_GetGitHubAccessToken.js",
+            "title": "Get GitHub Access Token.",
+            "description": "Get GitHub Access Token.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Factories_GetGitHubAccessToken.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_ListByFactory": {
+            "main": "./lib/actions/IntegrationRuntimes_ListByFactory.js",
+            "title": "Lists integration runtimes.",
+            "description": "Lists integration runtimes.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_ListByFactory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_Delete": {
+            "main": "./lib/actions/IntegrationRuntimes_Delete.js",
+            "title": "Deletes an integration runtime.",
+            "description": "Deletes an integration runtime.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_Get": {
+            "main": "./lib/actions/IntegrationRuntimes_Get.js",
+            "title": "Gets an integration runtime.",
+            "description": "Gets an integration runtime.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_Update": {
+            "main": "./lib/actions/IntegrationRuntimes_Update.js",
+            "title": "Updates an integration runtime.",
+            "description": "Updates an integration runtime.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_CreateOrUpdate": {
+            "main": "./lib/actions/IntegrationRuntimes_CreateOrUpdate.js",
+            "title": "Creates or updates an integration runtime.",
+            "description": "Creates or updates an integration runtime.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_GetConnectionInfo": {
+            "main": "./lib/actions/IntegrationRuntimes_GetConnectionInfo.js",
+            "title": "Gets the on-premises integration runtime connection information for encrypting the on-premises data source credentials.",
+            "description": "Gets the on-premises integration runtime connection information for encrypting the on-premises data source credentials.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_GetConnectionInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimeObjectMetadata_Get": {
+            "main": "./lib/actions/IntegrationRuntimeObjectMetadata_Get.js",
+            "title": "Get a SSIS integration runtime object metadata by specified path. The return is pageable metadata list.",
+            "description": "Get a SSIS integration runtime object metadata by specified path. The return is pageable metadata list.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimeObjectMetadata_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_GetStatus": {
+            "main": "./lib/actions/IntegrationRuntimes_GetStatus.js",
+            "title": "Gets detailed status information for an integration runtime.",
+            "description": "Gets detailed status information for an integration runtime.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_GetStatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_CreateLinkedIntegrationRuntime": {
+            "main": "./lib/actions/IntegrationRuntimes_CreateLinkedIntegrationRuntime.js",
+            "title": "Create a linked integration runtime entry in a shared integration runtime.",
+            "description": "Create a linked integration runtime entry in a shared integration runtime.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_CreateLinkedIntegrationRuntime.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_ListAuthKeys": {
+            "main": "./lib/actions/IntegrationRuntimes_ListAuthKeys.js",
+            "title": "Retrieves the authentication keys for an integration runtime.",
+            "description": "Retrieves the authentication keys for an integration runtime.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_ListAuthKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_GetMonitoringData": {
+            "main": "./lib/actions/IntegrationRuntimes_GetMonitoringData.js",
+            "title": "Get the integration runtime monitoring data, which includes the monitor data for all the nodes under this integration runtime.",
+            "description": "Get the integration runtime monitoring data, which includes the monitor data for all the nodes under this integration runtime.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_GetMonitoringData.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimeNodes_Delete": {
+            "main": "./lib/actions/IntegrationRuntimeNodes_Delete.js",
+            "title": "Deletes a self-hosted integration runtime node.",
+            "description": "Deletes a self-hosted integration runtime node.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimeNodes_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimeNodes_Get": {
+            "main": "./lib/actions/IntegrationRuntimeNodes_Get.js",
+            "title": "Gets a self-hosted integration runtime node.",
+            "description": "Gets a self-hosted integration runtime node.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimeNodes_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimeNodes_Update": {
+            "main": "./lib/actions/IntegrationRuntimeNodes_Update.js",
+            "title": "Updates a self-hosted integration runtime node.",
+            "description": "Updates a self-hosted integration runtime node.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimeNodes_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimeNodes_GetIpAddress": {
+            "main": "./lib/actions/IntegrationRuntimeNodes_GetIpAddress.js",
+            "title": "Get the IP address of self-hosted integration runtime node.",
+            "description": "Get the IP address of self-hosted integration runtime node.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimeNodes_GetIpAddress.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimeObjectMetadata_Refresh": {
+            "main": "./lib/actions/IntegrationRuntimeObjectMetadata_Refresh.js",
+            "title": "Refresh a SSIS integration runtime object metadata.",
+            "description": "Refresh a SSIS integration runtime object metadata.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimeObjectMetadata_Refresh.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_RegenerateAuthKey": {
+            "main": "./lib/actions/IntegrationRuntimes_RegenerateAuthKey.js",
+            "title": "Regenerates the authentication key for an integration runtime.",
+            "description": "Regenerates the authentication key for an integration runtime.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_RegenerateAuthKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_RemoveLinks": {
+            "main": "./lib/actions/IntegrationRuntimes_RemoveLinks.js",
+            "title": "Remove all linked integration runtimes under specific data factory in a self-hosted integration runtime.",
+            "description": "Remove all linked integration runtimes under specific data factory in a self-hosted integration runtime.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_RemoveLinks.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_Start": {
+            "main": "./lib/actions/IntegrationRuntimes_Start.js",
+            "title": "Starts a ManagedReserved type integration runtime.",
+            "description": "Starts a ManagedReserved type integration runtime.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_Start.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_Stop": {
+            "main": "./lib/actions/IntegrationRuntimes_Stop.js",
+            "title": "Stops a ManagedReserved type integration runtime.",
+            "description": "Stops a ManagedReserved type integration runtime.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_Stop.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_SyncCredentials": {
+            "main": "./lib/actions/IntegrationRuntimes_SyncCredentials.js",
+            "title": "Force the integration runtime to synchronize credentials across integration runtime nodes, and this will override the credentials across all worker nodes with those available on the dispatcher node. If you already have the latest credential backup file, you should manually import it (preferred) on any self-hosted integration runtime node than using this API directly.",
+            "description": "Force the integration runtime to synchronize credentials across integration runtime nodes, and this will override the credentials across all worker nodes with those available on the dispatcher node. If you already have the latest credential backup file, you should manually import it (preferred) on any self-hosted integration runtime node than using this API directly.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_SyncCredentials.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "IntegrationRuntimes_Upgrade": {
+            "main": "./lib/actions/IntegrationRuntimes_Upgrade.js",
+            "title": "Upgrade self-hosted integration runtime to latest version if availability.",
+            "description": "Upgrade self-hosted integration runtime to latest version if availability.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/IntegrationRuntimes_Upgrade.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LinkedServices_ListByFactory": {
+            "main": "./lib/actions/LinkedServices_ListByFactory.js",
+            "title": "Lists linked services.",
+            "description": "Lists linked services.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LinkedServices_ListByFactory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LinkedServices_Delete": {
+            "main": "./lib/actions/LinkedServices_Delete.js",
+            "title": "Deletes a linked service.",
+            "description": "Deletes a linked service.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LinkedServices_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LinkedServices_Get": {
+            "main": "./lib/actions/LinkedServices_Get.js",
+            "title": "Gets a linked service.",
+            "description": "Gets a linked service.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LinkedServices_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LinkedServices_CreateOrUpdate": {
+            "main": "./lib/actions/LinkedServices_CreateOrUpdate.js",
+            "title": "Creates or updates a linked service.",
+            "description": "Creates or updates a linked service.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LinkedServices_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PipelineRuns_Get": {
+            "main": "./lib/actions/PipelineRuns_Get.js",
+            "title": "Get a pipeline run by its run ID.",
+            "description": "Get a pipeline run by its run ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PipelineRuns_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PipelineRuns_Cancel": {
+            "main": "./lib/actions/PipelineRuns_Cancel.js",
+            "title": "Cancel a pipeline run by its run ID.",
+            "description": "Cancel a pipeline run by its run ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PipelineRuns_Cancel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ActivityRuns_QueryByPipelineRun": {
+            "main": "./lib/actions/ActivityRuns_QueryByPipelineRun.js",
+            "title": "Query activity runs based on input filter conditions.",
+            "description": "Query activity runs based on input filter conditions.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActivityRuns_QueryByPipelineRun.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pipelines_ListByFactory": {
+            "main": "./lib/actions/Pipelines_ListByFactory.js",
+            "title": "Lists pipelines.",
+            "description": "Lists pipelines.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pipelines_ListByFactory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pipelines_Delete": {
+            "main": "./lib/actions/Pipelines_Delete.js",
+            "title": "Deletes a pipeline.",
+            "description": "Deletes a pipeline.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pipelines_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pipelines_Get": {
+            "main": "./lib/actions/Pipelines_Get.js",
+            "title": "Gets a pipeline.",
+            "description": "Gets a pipeline.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pipelines_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pipelines_CreateOrUpdate": {
+            "main": "./lib/actions/Pipelines_CreateOrUpdate.js",
+            "title": "Creates or updates a pipeline.",
+            "description": "Creates or updates a pipeline.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pipelines_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pipelines_CreateRun": {
+            "main": "./lib/actions/Pipelines_CreateRun.js",
+            "title": "Creates a run of a pipeline.",
+            "description": "Creates a run of a pipeline.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pipelines_CreateRun.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PipelineRuns_QueryByFactory": {
+            "main": "./lib/actions/PipelineRuns_QueryByFactory.js",
+            "title": "Query pipeline runs in the factory based on input filter conditions.",
+            "description": "Query pipeline runs in the factory based on input filter conditions.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PipelineRuns_QueryByFactory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TriggerRuns_QueryByFactory": {
+            "main": "./lib/actions/TriggerRuns_QueryByFactory.js",
+            "title": "Query trigger runs.",
+            "description": "Query trigger runs.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TriggerRuns_QueryByFactory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Triggers_ListByFactory": {
+            "main": "./lib/actions/Triggers_ListByFactory.js",
+            "title": "Lists triggers.",
+            "description": "Lists triggers.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Triggers_ListByFactory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Triggers_Delete": {
+            "main": "./lib/actions/Triggers_Delete.js",
+            "title": "Deletes a trigger.",
+            "description": "Deletes a trigger.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Triggers_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Triggers_Get": {
+            "main": "./lib/actions/Triggers_Get.js",
+            "title": "Gets a trigger.",
+            "description": "Gets a trigger.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Triggers_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Triggers_CreateOrUpdate": {
+            "main": "./lib/actions/Triggers_CreateOrUpdate.js",
+            "title": "Creates or updates a trigger.",
+            "description": "Creates or updates a trigger.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Triggers_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RerunTriggers_ListByTrigger": {
+            "main": "./lib/actions/RerunTriggers_ListByTrigger.js",
+            "title": "Lists rerun triggers by an original trigger name.",
+            "description": "Lists rerun triggers by an original trigger name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RerunTriggers_ListByTrigger.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RerunTriggers_Create": {
+            "main": "./lib/actions/RerunTriggers_Create.js",
+            "title": "Creates a rerun trigger.",
+            "description": "Creates a rerun trigger.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RerunTriggers_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RerunTriggers_Cancel": {
+            "main": "./lib/actions/RerunTriggers_Cancel.js",
+            "title": "Cancels a trigger.",
+            "description": "Cancels a trigger.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RerunTriggers_Cancel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RerunTriggers_Start": {
+            "main": "./lib/actions/RerunTriggers_Start.js",
+            "title": "Starts a trigger.",
+            "description": "Starts a trigger.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RerunTriggers_Start.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RerunTriggers_Stop": {
+            "main": "./lib/actions/RerunTriggers_Stop.js",
+            "title": "Stops a trigger.",
+            "description": "Stops a trigger.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RerunTriggers_Stop.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Triggers_Start": {
+            "main": "./lib/actions/Triggers_Start.js",
+            "title": "Starts a trigger.",
+            "description": "Starts a trigger.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Triggers_Start.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Triggers_Stop": {
+            "main": "./lib/actions/Triggers_Stop.js",
+            "title": "Stops a trigger.",
+            "description": "Stops a trigger.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Triggers_Stop.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

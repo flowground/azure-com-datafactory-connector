@@ -1,0 +1,187 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "factoryName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 63,
+            "pattern": "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$"
+        },
+        "datasetName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 260,
+            "pattern": "^[A-Za-z0-9_][^<>*#.%&:\\\\+?/]*$"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Azure Data Factory nested resource, which belongs to a factory.",
+                    "properties": {
+                        "etag": {
+                            "description": "Etag identifies change in the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "id": {
+                            "description": "The resource identifier.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The resource name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The resource type.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Dataset resource type.",
+            "properties": {
+                "properties": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "description": "The Azure Data Factory nested object which identifies data within different data stores, such as tables, files, folders, and documents.",
+                    "discriminator": {
+                        "propertyName": "type"
+                    },
+                    "properties": {
+                        "annotations": {
+                            "description": "List of tags that can be used for describing the Dataset.",
+                            "items": {
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "description": {
+                            "description": "Dataset description.",
+                            "type": "string"
+                        },
+                        "folder": {
+                            "description": "The folder that this Dataset is in. If not specified, Dataset will appear at the root level.",
+                            "properties": {
+                                "name": {
+                                    "description": "The name of the folder that this Dataset is in.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "linkedServiceName": {
+                            "description": "Linked service reference type.",
+                            "properties": {
+                                "parameters": {
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    },
+                                    "description": "An object mapping parameter names to argument values.",
+                                    "type": "object"
+                                },
+                                "referenceName": {
+                                    "description": "Reference LinkedService name.",
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "description": "Linked service reference type.",
+                                    "enum": [
+                                        "LinkedServiceReference"
+                                    ],
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "type",
+                                "referenceName"
+                            ],
+                            "type": "object"
+                        },
+                        "parameters": {
+                            "additionalProperties": {
+                                "description": "Definition of a single parameter for an entity.",
+                                "properties": {
+                                    "defaultValue": {
+                                        "description": "Default value of parameter.",
+                                        "type": "object"
+                                    },
+                                    "type": {
+                                        "description": "Parameter type.",
+                                        "enum": [
+                                            "Object",
+                                            "String",
+                                            "Int",
+                                            "Float",
+                                            "Bool",
+                                            "Array",
+                                            "SecureString"
+                                        ],
+                                        "type": "string",
+                                        "x-ms-enum": {
+                                            "modelAsString": true,
+                                            "name": "ParameterType"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "type"
+                                ],
+                                "type": "object"
+                            },
+                            "description": "Definition of all parameters for an entity.",
+                            "type": "object"
+                        },
+                        "schema": {
+                            "description": "Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.",
+                            "type": "object"
+                        },
+                        "structure": {
+                            "description": "Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "Type of dataset.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "linkedServiceName"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        },
+        "If_Match": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

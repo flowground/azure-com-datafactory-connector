@@ -1,0 +1,56 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "factoryName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 63,
+            "pattern": "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$"
+        },
+        "integrationRuntimeName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 63,
+            "pattern": "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$"
+        },
+        "requestBody": {
+            "description": "The linked integration runtime information.",
+            "properties": {
+                "dataFactoryLocation": {
+                    "description": "The location of the data factory that the linked integration runtime belongs to.",
+                    "type": "string"
+                },
+                "dataFactoryName": {
+                    "description": "The name of the data factory that the linked integration runtime belongs to.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of the linked integration runtime.",
+                    "type": "string"
+                },
+                "subscriptionId": {
+                    "description": "The ID of the subscription that the linked integration runtime belongs to.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

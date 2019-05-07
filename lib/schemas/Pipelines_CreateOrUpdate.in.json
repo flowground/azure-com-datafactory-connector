@@ -1,0 +1,267 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "factoryName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 63,
+            "pattern": "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$"
+        },
+        "pipelineName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 260,
+            "pattern": "^[A-Za-z0-9_][^<>*#.%&:\\\\+?/]*$"
+        },
+        "requestBody": {
+            "additionalProperties": {
+                "type": "object"
+            },
+            "allOf": [
+                {
+                    "description": "Azure Data Factory nested resource, which belongs to a factory.",
+                    "properties": {
+                        "etag": {
+                            "description": "Etag identifies change in the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "id": {
+                            "description": "The resource identifier.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The resource name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The resource type.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Pipeline resource type.",
+            "properties": {
+                "properties": {
+                    "description": "A data factory pipeline.",
+                    "properties": {
+                        "activities": {
+                            "description": "List of activities in pipeline.",
+                            "items": {
+                                "additionalProperties": {
+                                    "type": "object"
+                                },
+                                "description": "A pipeline activity.",
+                                "discriminator": {
+                                    "propertyName": "type"
+                                },
+                                "properties": {
+                                    "dependsOn": {
+                                        "description": "Activity depends on condition.",
+                                        "items": {
+                                            "additionalProperties": {
+                                                "type": "object"
+                                            },
+                                            "description": "Activity dependency information.",
+                                            "properties": {
+                                                "activity": {
+                                                    "description": "Activity name.",
+                                                    "type": "string"
+                                                },
+                                                "dependencyConditions": {
+                                                    "description": "Match-Condition for the dependency.",
+                                                    "items": {
+                                                        "enum": [
+                                                            "Succeeded",
+                                                            "Failed",
+                                                            "Skipped",
+                                                            "Completed"
+                                                        ],
+                                                        "type": "string",
+                                                        "x-ms-enum": {
+                                                            "modelAsString": true,
+                                                            "name": "DependencyCondition"
+                                                        }
+                                                    },
+                                                    "type": "array"
+                                                }
+                                            },
+                                            "required": [
+                                                "activity",
+                                                "dependencyConditions"
+                                            ],
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "description": {
+                                        "description": "Activity description.",
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "description": "Activity name.",
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "description": "Type of activity.",
+                                        "type": "string"
+                                    },
+                                    "userProperties": {
+                                        "description": "Activity user properties.",
+                                        "items": {
+                                            "description": "User property.",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "User property name.",
+                                                    "type": "string"
+                                                },
+                                                "value": {
+                                                    "description": "User property value. Type: string (or Expression with resultType string).",
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "required": [
+                                                "name",
+                                                "value"
+                                            ],
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "type"
+                                ],
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "annotations": {
+                            "description": "List of tags that can be used for describing the Pipeline.",
+                            "items": {
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "concurrency": {
+                            "description": "The max number of concurrent runs for the pipeline.",
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        "description": {
+                            "description": "The description of the pipeline.",
+                            "type": "string"
+                        },
+                        "folder": {
+                            "description": "The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.",
+                            "properties": {
+                                "name": {
+                                    "description": "The name of the folder that this Pipeline is in.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "parameters": {
+                            "additionalProperties": {
+                                "description": "Definition of a single parameter for an entity.",
+                                "properties": {
+                                    "defaultValue": {
+                                        "description": "Default value of parameter.",
+                                        "type": "object"
+                                    },
+                                    "type": {
+                                        "description": "Parameter type.",
+                                        "enum": [
+                                            "Object",
+                                            "String",
+                                            "Int",
+                                            "Float",
+                                            "Bool",
+                                            "Array",
+                                            "SecureString"
+                                        ],
+                                        "type": "string",
+                                        "x-ms-enum": {
+                                            "modelAsString": true,
+                                            "name": "ParameterType"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "type"
+                                ],
+                                "type": "object"
+                            },
+                            "description": "Definition of all parameters for an entity.",
+                            "type": "object"
+                        },
+                        "variables": {
+                            "additionalProperties": {
+                                "description": "Definition of a single variable for a Pipeline.",
+                                "properties": {
+                                    "defaultValue": {
+                                        "description": "Default value of variable.",
+                                        "type": "object"
+                                    },
+                                    "type": {
+                                        "description": "Variable type.",
+                                        "enum": [
+                                            "String",
+                                            "Bool",
+                                            "Array"
+                                        ],
+                                        "type": "string",
+                                        "x-ms-enum": {
+                                            "modelAsString": true,
+                                            "name": "VariableType"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "type"
+                                ],
+                                "type": "object"
+                            },
+                            "description": "Definition of variable for a Pipeline.",
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        },
+        "If_Match": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
